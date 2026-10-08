@@ -58,9 +58,14 @@ Route::middleware(['auth', IsAdmin::class])->prefix('admin')->name('admin.')->gr
 Route::middleware(['auth', IsPetugas::class])->prefix('petugas')->name('petugas.')->group(function () {
     Route::get('/peminjaman', [PetugasController::class, 'indexPeminjaman'])->name('peminjaman.index');
     Route::post('/peminjaman/{id}/setujui', [PetugasController::class, 'setujuiPeminjaman'])->name('peminjaman.setujui');
+    Route::post('/peminjaman/{id}/tolak', [PetugasController::class, 'tolakPeminjaman'])->name('peminjaman.tolak');
+    Route::get('/laporan', [PetugasController::class, 'indexLaporan'])->name('laporan.index');
+    Route::get('/laporan', [PetugasController::class, 'laporan'])->name('laporan.index');
+    Route::get('/laporan/cetak', [PetugasController::class, 'cetakLaporan'])->name('laporan.cetak');
 
     // Pengembalian & Denda
     Route::post('/pengembalian/{id}', [PetugasController::class, 'prosesPengembalian'])->name('pengembalian.proses');
+    Route::get('/pengembalian', [PetugasController::class, 'indexPengembalian'])->name('pengembalian.index');
 });
 
 // peminjam

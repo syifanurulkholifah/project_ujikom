@@ -370,7 +370,7 @@ class AdminController extends Controller
     {
         $peminjaman = Peminjaman::with('detailPinjams.alat')->findOrFail($id);
 
-        $request->validate(['status' => 'required|in:diajukan,dipinjam,selesai,telat']);
+        $request->validate(['status' => 'required|in:diajukan,dipinjam,dikembalikan,telat']);
 
         DB::beginTransaction();
         try {
