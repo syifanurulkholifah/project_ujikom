@@ -244,7 +244,7 @@ class AdminController extends Controller
         Kategori::create([
             'nama_kategori' => $request->nama_kategori,
         ]);
-
+   
         return redirect()->route('admin.kategori.index')->with('success', 'Kategori berhasil ditambahkan.');
     }
 
@@ -277,7 +277,7 @@ class AdminController extends Controller
         $kategori = Kategori::findOrFail($id);
 
         // Opsyonal: Cek apakah kategori masih dipakai oleh alat
-        if ($kategori->alats()->count() > 0) {
+        if ($kategori->alat()->count() > 0) {
             return redirect()->route('admin.kategori.index')
                 ->with('error', 'Kategori tidak dapat dihapus karena masih digunakan oleh data alat.');
         }
